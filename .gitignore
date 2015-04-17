@@ -1,4 +1,4 @@
-nm-objdump-en.pdf
+subject.pdf
 a.out
 nm
 objdump
@@ -7,3 +7,4 @@ objdump
 *~
 \#*\#
 .\#*
+test

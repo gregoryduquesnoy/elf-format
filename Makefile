@@ -5,7 +5,7 @@
 ## Login   <duques_g@epitech.net>
 ## 
 ## Started on  Wed Apr 15 22:59:47 2015 duques_g
-## Last update Wed Apr 15 23:04:41 2015 duques_g
+## Last update Fri Apr 17 02:01:29 2015 duques_g
 ##
 
 NAME_OBJDUMP	=	my_objdump
@@ -15,10 +15,13 @@ DIR_OBJDUMP	=	objdump_src
 DIR_NM		=	nm_src
 
 SRCS_OBJDUMP	+=	$(DIR_OBJDUMP)/main.c
-SRCS_NM		+=	$(DIR_NM)/main.c
 
-CFLAGS		+=	-W -Wall -Wextra -Werror
+SRCS_NM		+=	$(DIR_NM)/main.c
+SRCS_NM		+=	$(DIR_NM)/get_data.c
+
+CFLAGS		+=	-W -Wall -Wextra
 CFLAGS		+=	-I includes
+CFLAGS		+=	-g
 
 CC		=	gcc
 RM		=	rm -f
