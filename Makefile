@@ -5,7 +5,7 @@
 ## Login   <duques_g@epitech.net>
 ## 
 ## Started on  Wed Apr 15 22:59:47 2015 duques_g
-## Last update Fri Apr 17 02:01:29 2015 duques_g
+## Last update Sat Apr 18 20:00:08 2015 duques_g
 ##
 
 NAME_OBJDUMP	=	my_objdump
@@ -18,6 +18,7 @@ SRCS_OBJDUMP	+=	$(DIR_OBJDUMP)/main.c
 
 SRCS_NM		+=	$(DIR_NM)/main.c
 SRCS_NM		+=	$(DIR_NM)/get_data.c
+SRCS_NM		+=	$(DIR_NM)/print_symbols.c
 
 CFLAGS		+=	-W -Wall -Wextra
 CFLAGS		+=	-I includes

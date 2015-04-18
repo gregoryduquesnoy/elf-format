@@ -1,11 +1,11 @@
 /*
 ** main.c for  in /home/duques_g/Programming/AUSP_nmobjdump/nm_src
-** 
+**
 ** Made by duques_g
 ** Login   <duques_g@epitech.net>
-** 
+**
 ** Started on  Fri Apr 17 01:51:05 2015 duques_g
-** Last update Fri Apr 17 02:31:40 2015 duques_g
+** Last update Sat Apr 18 19:53:59 2015 duques_g
 */
 
 #include <stdlib.h>
@@ -25,19 +25,6 @@ static void	get_symbols_tab(t_sym *sym, void *data, Elf64_Shdr *shdr, int shnum)
 	  sym->strtab = (char *)(data + shdr[shdr[i].sh_link].sh_offset);
 	}
     }
-  return (sym);
-}
-#include <stdio.h>
-void		print_symbols(t_sym *sym)
-{
-  Elf64_Sym	*tmp;
-
-  tmp = sym->sym;
-  while (tmp != sym->end)
-    {
-      printf("%s\n", &sym->strtab[tmp->st_name]);
-      ++tmp;
-    }
 }
 
 void		get_elf(Elf64_Ehdr *ehdr)
@@ -47,7 +34,7 @@ void		get_elf(Elf64_Ehdr *ehdr)
 
   shdr = (Elf64_Shdr *)((void *)ehdr + ehdr->e_shoff);
   get_symbols_tab(&sym, ehdr, shdr, ehdr->e_shnum);
-  print_symbols(&sym);
+  print_symbols(&sym, shdr);
 }
 
 int		main(int argc, char **argv)
