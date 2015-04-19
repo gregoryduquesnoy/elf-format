@@ -5,14 +5,15 @@
 ** Login   <duques_g@epitech.net>
 **
 ** Started on  Fri Apr 17 01:51:05 2015 duques_g
-** Last update Sat Apr 18 19:59:27 2015 duques_g
+** Last update Sun Apr 19 23:10:41 2015 duques_g
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "nm.h"
 
-static char		check_stb(Elf64_Sym CNST_PTR sym, Elf64_Shdr CNST_PTR shdr)
+static char		check_stb(Elf64_Sym CNST_PTR sym,
+				  Elf64_Shdr CNST_PTR shdr __attribute__((unused)))
 {
   char			c;
   register int		i;
@@ -37,7 +38,8 @@ static char		check_stb(Elf64_Sym CNST_PTR sym, Elf64_Shdr CNST_PTR shdr)
   return (c);
 }
 
-static char		check_section(Elf64_Sym CNST_PTR sym, Elf64_Shdr CNST_PTR shdr)
+static char		check_section(Elf64_Sym CNST_PTR sym,
+				      Elf64_Shdr CNST_PTR shdr __attribute__((unused)))
 {
   register int		i;
   static t_stb const	sctn[] = {{'U', SHN_UNDEF},
@@ -81,10 +83,10 @@ static char		get_type(Elf64_Sym *sym, Elf64_Shdr *shdr)
 {
   char			c;
   register int		i;
-  static char const	(*ptr[])(Elf64_Sym CNST_PTR,
-				 Elf64_Shdr CNST_PTR) = {&check_stb,
-							 &check_section,
-							 &check_type,
+  static char		(*ptr[])(Elf64_Sym CNST_PTR,
+				 Elf64_Shdr CNST_PTR) = {check_stb,
+							 check_section,
+							 check_type,
 							 NULL};
 
   i = -1;
@@ -114,9 +116,9 @@ void		print_symbols(t_sym *sym, Elf64_Shdr *shdr)
 	}
       c = get_type(tmp, shdr);
       if (tmp->st_value)
-	printf("%016x %c %s\n", tmp->st_value , c, &sym->strtab[tmp->st_name]);
+	printf("%016x %c %s\n", (unsigned int)tmp->st_value , c, &sym->strtab[tmp->st_name]);
       else
-	printf("% 18c %s\n", c, &sym->strtab[tmp->st_name]);
+	printf("%18c %s\n", c, &sym->strtab[tmp->st_name]);
       ++tmp;
     }
 }
