@@ -1,6 +1,7 @@
 subject.pdf
 a.out
 nm
+my_nm
 objdump
 *.o
 *.csv
