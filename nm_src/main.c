@@ -5,19 +5,26 @@
 ** Login   <duques_g@epitech.net>
 **
 ** Started on  Fri Apr 17 01:51:05 2015 duques_g
-** Last update Sat Apr 18 19:53:59 2015 duques_g
+** Last update Mon Apr 20 04:49:32 2015 duques_g
 */
 
 #include <stdlib.h>
 #include "nm.h"
 
-static void	get_symbols_tab(t_sym *sym, void *data, Elf64_Shdr *shdr, int shnum)
+static void	get_symbols_tab(t_sym *sym,
+				void *data,
+				Elf64_Shdr *shdr,
+				int shnum)
 {
   int		i;
+  char		*str;
 
   i = -1;
+  str = (char *)(data + shdr[((Elf64_Ehdr *)data)->e_shstrndx].sh_offset);
+
   while (++i != shnum)
     {
+      printf("%s\n", &str[shdr[i].sh_name]);
       if (shdr[i].sh_type == SHT_SYMTAB)
 	{
 	  sym->sym = (Elf64_Sym *)(data + shdr[i].sh_offset);

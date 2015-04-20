@@ -5,7 +5,7 @@
 ** Login   <duques_g@epitech.net>
 **
 ** Started on  Fri Apr 17 01:51:05 2015 duques_g
-** Last update Sun Apr 19 23:10:41 2015 duques_g
+** Last update Mon Apr 20 04:49:11 2015 duques_g
 */
 
 #include <stdlib.h>
@@ -116,7 +116,8 @@ void		print_symbols(t_sym *sym, Elf64_Shdr *shdr)
 	}
       c = get_type(tmp, shdr);
       if (tmp->st_value)
-	printf("%016x %c %s\n", (unsigned int)tmp->st_value , c, &sym->strtab[tmp->st_name]);
+	printf("%016x %c %s\n", (unsigned int)tmp->st_value ,
+	       c, &sym->strtab[tmp->st_name]);
       else
 	printf("%18c %s\n", c, &sym->strtab[tmp->st_name]);
       ++tmp;
